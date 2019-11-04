@@ -1,0 +1,11 @@
+{
+  "name": "vApp-3.4",
+  "version": "0.0.1",
+  "devDependencies": {
+    "http-proxy": "^1.18.0",
+    "nodemon": "^1.19.3"
+  },
+  "scripts": {
+    "start": "nodemon proxy.js"
+  }
+}

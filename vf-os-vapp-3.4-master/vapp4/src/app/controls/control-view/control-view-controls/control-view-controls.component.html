@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th>Mo</th>
+      <th>Product</th>
+      <th>CPS ID</th>
+      <th>Measure</th>
+      <th>Tolerance</th>
+      <th>Control</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let control of controlInformation">
+      <td>{{control.mo}}</td>
+      <td>{{control.product}}</td>
+      <td>{{control.cps}}</td>
+      <td>{{control.measure}}</td>
+      <td>{{control.tolerence}}</td>
+      <td>{{control.blob}}</td>
+      <td>{{control.ok}}</td>
+      <td>{{control.action}}</td>
+    </tr>
+  </tbody>
+</table>

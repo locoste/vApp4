@@ -1,0 +1,12 @@
+<app-main title="Quality report">
+  <main class="control-view" *ngIf="controller !== null && cpsControlInformationArray !== null; else loading">
+    <app-control-view-meta [controlInformation]="controller"></app-control-view-meta>
+    <app-control-view-controls [controlInformation]="cpsControlInformationArray"></app-control-view-controls>
+    <app-control-view-recommendations></app-control-view-recommendations>
+    <app-control-view-chart [controlInformation]="cpsControlInformationArray"></app-control-view-chart>
+  </main>
+  <ng-template #loading>
+    Data is loading.<br>
+    Please wait...
+  </ng-template>
+</app-main>

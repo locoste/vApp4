@@ -1,0 +1,408 @@
+openapi: 3.0.1
+info:
+  title: vf-OS vApp 3.4 Endpoints
+  version: 1.0.0
+servers:
+  - url: http://159.84.143.247:8003
+paths:
+  /login:
+    post:
+      tags:
+        - auth
+      summary: login with login and password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginCredentials'
+        required: true
+      responses:
+        200:
+          description: OK
+          headers:
+            Set-Cookie:
+              description: connect.sid=s%3Abf16d03b-d0ff-492b-869d-f07a77b29a2a.0vAjxlgCgHrci9F0UtkT4Ry9lcuKR3G%2Fh9NUXMLQcAQ;
+                Path=/; Expires=Mon, 07 Oct 2019 11:03:55 GMT; HttpOnly
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Login with sucess
+  /logout:
+    post:
+      tags:
+        - auth
+      summary: logout function
+      responses:
+        200:
+          description: No response given
+          content: {}
+
+  /getUserCompany:
+    get:
+      tags:
+        - auth
+      summary: get user company with id
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserCompany'
+        500:
+          description: No response, timeout
+  /getNewControlInformation:
+    get:
+      tags:
+        - controllers
+      summary: get all new controller page field information
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewControlInformation'
+  /setNewControlInformation:
+    post:
+      tags:
+        - controllers
+      summary: Set all information for a new quality control
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateControlInformation'
+      responses:
+        200:
+          description: "OK"
+
+  /getGlobalControlInformation/{mo}:
+    get:
+      tags:
+        - controllers
+      summary: get CPS control information
+      parameters:
+        - name: mo
+          in: path
+          required: true
+          description: Manufacturing Order
+          schema:
+            type: string
+            example: "n.A."
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GlobalControlInformation'
+
+  /getAllControl:
+    get:
+      tags:
+        - controllers
+      summary: get all quality control made by the CPS
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ControlInformation'
+
+  /startCpsControl/{control}:
+    post:
+      tags:
+        - controllers
+      summary: start a CPS control on an operation of a Manufacturing Order
+      parameters:
+        - name: control
+          in: path
+          required: true
+          schema:
+            type: string
+            example: 1
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: control begin
+  /stopCpsControl/{control}:
+    post:
+      tags:
+        - controllers
+      summary: stop the control of aMO by the CPS
+      parameters:
+        - name: control
+          in: path
+          required: true
+          schema:
+            type: string
+            example: 1
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: control stopped
+
+  /getListOperation/{mo}:
+    get:
+      tags:
+        - manufacturing orders
+      summary: get the list of all operation for a Manufacturing Order
+      parameters:
+        - name: mo
+          in: path
+          required: true
+          schema:
+            type: string
+            example: "n.A."
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Operation'
+
+  /getListOfMO:
+    get:
+      tags:
+        - manufacturing orders
+      summary: get the list all all MO
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ManufacturingOrder'
+
+  /configureCamera:
+    post:
+      tags:
+        - config
+      summary: configure both camera of the CPS
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CameraConfig'
+      responses:
+        200:
+          description: "OK"
+  /configureCylindre:
+    post:
+      tags:
+        - config
+      summary: configure both cylindre of the CPS
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CylindreConfig'
+      responses:
+        200:
+          description: "OK"
+components:
+  schemas:
+
+    LoginCredentials:
+      type: object
+      properties:
+        email:
+          type: string
+          example: informatique@apr.eu
+        password:
+          type: string
+          example: mozilla69
+    UserCompany:
+      type: object
+      properties:
+        company:
+          type: string
+          example: APR
+
+    GlobalControlInformation:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        cps:
+          type: string
+          description: CPS ID
+          example: 1
+        mo:
+          type: string
+          description: Manufacturing Order
+          example: 80191827
+        ope:
+          type: string
+          description: Operation
+          example: FINITION
+        product:
+          type: string
+          description: Product Ref. No.
+          example: DT51387
+        product_cost:
+          type: integer
+          example: 84
+        ressource_cost:
+          type: integer
+          example: 67
+        control_type:
+          type: string
+          example: Sample
+        control_size:
+          type: string
+          example: 100
+        measure:
+          type: string
+          example: Appearence
+        max_tolerence:
+          type: string
+          example: 4
+        customer:
+          type: string
+          description: Customer
+          example: ALSTOM
+    NewControlInformation:
+      type: object
+      properties:
+        cps_libele:
+          type: string
+          example: CPS1
+    ManufacturingOrder:
+      type: object
+      properties:
+        numorfs:
+          type: number
+          description: mo number
+          example: 30
+        codcpt:
+          type: string
+          description: product
+          example: ALSTOM73
+        libar1:
+          type: string
+          example: ARBRE ENTREE DE MVT SECTIONNEUR
+        qtepre:
+          type: number
+          description: quantity
+          example: 150
+    Operation:
+      type: object
+      properties:
+        libope:
+          type: string
+          example: FINITION MANUEL
+    ControlInformation:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        mo:
+          type: string
+          example: '9019054'
+        product:
+          type: string
+          example: DT51387
+        cps_libele:
+          type: string
+          example: CPS1
+        measure:
+          type: string
+          example: Appearence
+        max_tolerance:
+          type: integer
+          example: 4
+    CreateControlInformation:
+      type: object
+      properties:
+        cps:
+        mo:
+        ope:
+        product:
+        product_cost:
+        ressource_cost:
+        control_type:
+        control_size:
+        measure:
+        max_tolerence:
+        customer:
+
+    CameraConfig:
+      type: object
+      properties:
+        ip1:
+          type: string
+          example: 192.168.0.100
+        port1:
+          type: string
+          example: 5002
+        ip2:
+          type: string
+          example: 192.168.0.101
+        port2:
+          type: string
+          example: 5003
+    CylindreConfig:
+      type: object
+      properties:
+        ip1:
+          type: string
+          example: 192.168.0.102
+        port1:
+          type: string
+          example: 5003
+        time1:
+          type: string
+          example: 200
+        ip2:
+          type: string
+          example: 192.168.0.103
+        port2:
+          type: string
+          example: 5002
+        time2:
+          type: string
+          example: 200
+# disabled due to problems with integrating the generated code for angular
+#  securitySchemes:
+#    cookie_auth:
+#      type: apiKey
+#      name: 'Cookie: connect.sid'
+#      in: cookie

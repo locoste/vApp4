@@ -1,0 +1,92 @@
+<app-main>
+  <form>
+    <div class="row">
+      <div class="col-sm-5 text-right">CPS ID</div>
+      <div class="col-sm-7">
+        <select size="1" (change)="newControl.cps = cpsId.value" #cpsId>
+          <option *ngFor="let control of newControls" [value]="control.cps_libele">{{control.cps_libele}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-5 text-right">Manufacturing Order</div>
+      <div class="col-sm-7">
+        <select size="1" (change)="updateOperations(+manufacturingOrder.value); newControl.mo = manufacturingOrder.value" #manufacturingOrder>
+          <option *ngFor="let mo of manufacturingOrders" [value]="mo.numofs">#{{mo.numofs}}</option>
+        </select>
+      </div>    
+    </div>
+
+    <div class="row">
+      <div class="col-sm-5 text-right">Operation</div>
+      <div class="col-sm-7">
+        <select size="1" (change)="newControl.ope = operation.value" [disabled]="operations === []" #operation>
+          <option *ngFor="let operation of operations" [value]="operation.libope">{{operation.libope}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-5 text-right">Product</div>
+      <div class="col-sm-7">
+        <input type="text" (change)="newControl.product = product.value" #product>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-5 text-right">Product Cost</div>
+      <div class="col-sm-7">
+        <input type="number" (change)="newControl.product_cost = productCost.value" #productCost>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-5 text-right">Control Type</div>
+      <div class="col-sm-7">
+        <select size="1" (change)="newControl.control_type = controlType.value" #controlType>
+          <option>Sample</option>
+          <option>Total 100%</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-5 text-right">Control Size</div>
+      <div class="col-sm-7">
+        <input type="number" (change)="newControl.control_size = controlSize.value" #controlSize>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-5 text-right">Measure</div>
+      <div class="col-sm-7">
+        <select size="1" (change)="newControl.measure = measure.value" #measure>
+          <option>Appearance</option>
+          <option>Dimension</option>
+          <option>Geometric</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-5 text-right">Tolerance min</div>
+      <div class="col-sm-7">
+        <input type="number" (change)="newControl.min_tolerence = minTolerance.value" #minTolerance>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-5 text-right">Tolerance max</div>
+      <div class="col-sm-7">
+        <input type="number" (change)="newControl.max_tolerence = maxTolerance.value" #maxTolerance>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="offset-sm-5 col-sm-7">
+        <button type="submit" (click)="createNew()">Submit</button>
+      </div>
+    </div>
+  </form>
+</app-main>

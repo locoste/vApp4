@@ -1,0 +1,50 @@
+<div class="container-fluid" style="height:100vh;">
+  <div class="row" style="height:100%;">
+    <div class="col-lg-2"> <!-- Menu gauche -->
+      <div class="menu_gauche">
+        <h2 class="menu_text" style="padding-left: 5px;"> MENU </h2>
+        <div class="row col_menu" style="height: 50px;  border-bottom: 1px solid black;">
+          <a class="col-lg-3" routerLink="/controls/new" style="background-color: #9FA1B4;">
+            <span class="center-content" style="padding-top: 8px;"><i class="far fa-plus-square fa-2x"></i></span>
+          </a>
+          <a class="col-lg-9" routerLink="/controls/new" style="background-color: #616481; padding-top: 8px;">
+            <b>New control</b>
+          </a>
+        </div>
+        <div class="row col_menu" style="height: 50px;">
+          <a class="col-lg-3" routerLink="/controls" style="background-color: #9FA1B4;">
+            <span class="center-content" style="padding-top: 8px;"><i class="fas fa-search fa-2x"></i></span>
+          </a>
+          <a class="col-lg-9" routerLink="/controls" style="background-color: #616481; padding-top: 8px;">
+            <b>Ongoing controls</b>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-10">
+      <div class="row">
+        <div class="col-lg-9" style="padding-top: 12px;">
+          <h1>{{title}}</h1>
+        </div>
+        <div class="col-lg-3" style="padding-top: 12px;">
+          <div class="header_icons">
+            <!-- TODO: add user -->
+            <a class="header_a" *ngIf="user !== null">
+              {{user.company}}
+              <i class="fas fa-user-circle fa-2x"></i>
+            </a>
+            <a class="header_a" routerLink="/home">
+              <i class="fas fa-home fa-2x"></i>
+            </a>
+            <a class="header_a" (click)="logout()">
+              <i class="fas fa-sign-out-alt fa-2x"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row main-content">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

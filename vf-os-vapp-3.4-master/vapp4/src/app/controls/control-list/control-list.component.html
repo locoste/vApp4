@@ -1,0 +1,21 @@
+<app-main title="Ongoing controls">
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Mo</th>
+      <th>Product</th>
+      <th>CPS ID</th>
+      <th>Measure</th>
+      <th>Max tolerance</th>
+    </tr>
+
+    <tr *ngFor="let row of controllers" (click)="openController(row)" class="pointer">
+      <td>{{row.id}}</td>
+      <td>{{row.mo}}</td>
+      <td>{{row.product}}</td>
+      <td>{{row.cps_libele}}</td>
+      <td>{{row.measure}}</td>
+      <td>{{row.max_tolerance}}</td>
+    </tr>
+  </table>
+</app-main>

@@ -1,0 +1,31 @@
+.control-view {
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas:  "meta             meta"
+                        "controls         chart"
+                        "recommendations  chart";
+  grid-auto-rows: minmax(100px, auto);
+  grid-template-rows: 125px 1fr 1fr;
+  grid-template-columns: auto;
+
+  app-control-view-meta {
+    grid-area: meta;
+  }
+  app-control-view-controls {
+    grid-area: controls;
+
+    max-height: 30vh;
+    overflow-y: auto;
+  }
+  app-control-view-recommendations {
+    grid-area: recommendations;
+  }
+  app-control-view-chart {
+    grid-area: chart;
+
+    max-height: 30vh;
+  }
+}

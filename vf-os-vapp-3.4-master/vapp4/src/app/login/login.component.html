@@ -1,0 +1,86 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row justify-content-center blankspace50">
+      <p></p>
+    </div>
+    <div class="row justify-content-center blankspace50">
+      <p></p>
+    </div>
+
+  </div>
+  <div class="container">
+    <form method="post" (ngSubmit)="login()">
+      <div class="row justify-content-center">
+        <div class="col-lg-4 login_container" style="border:1px solid white;">
+          <div class="row justify-content-center blankspace50">
+            <p></p>
+          </div>
+          <span class="center-content"><i class="fas fa-user-circle fa-4x"></i></span>
+          <div class="row justify-content-center">
+            <span class="center-content"><h1>Sign In</h1></span>
+          </div>
+
+          <div class="row justify-content-center" *ngIf="errorMsg !== ''">
+            <span class="center-content error">{{errorMsg}}</span>
+          </div>
+
+          <div class="row justify-content-center">
+            <span class="center-content"><input [(ngModel)]="email" [disabled]="formDisabled" type="email" name="email" class="form-control" placeholder="Email" style="padding-left: 10px;"></span>
+          </div>
+
+          <div class="row justify-content-center">
+            <p></p>
+          </div>
+
+          <div class="row justify-content-center">
+            <span class="center-content"><input [(ngModel)]="password" [disabled]="formDisabled" type="password" name="password" class="form-control" placeholder="Password" style="padding-left: 10px;"></span>
+          </div>
+
+          <div class="row justify-content-center">
+            <p></p>
+          </div>
+
+          <div class="row justify-content-center">
+            <button [disabled]="formDisabled" class="butn" type="submit">Login</button>
+          </div>
+
+          <div class="row justify-content-center">
+            <p></p>
+          </div>
+
+          <div class="row justify-content-center">
+            <span class="center-content">No account yet ? <a class="href_button" href="CreateUser.html" style="color:#5161A2;">REGISTER</a></span>
+          </div>
+
+          <div class="row justify-content-center blankspace25">
+            <p></p>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="sep_line"></div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center blankspace10">
+            <p></p>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-lg-4">
+              <span class="center-content"><img style="width: 100px; height: 39px;" alt="APR logo" src="assets/images/apr-qd.jpg"></span>
+            </div>
+            <div class="col-lg-4">
+              <span class="center-content"><img style="width: 100px; height: 39px;" alt="TARDY logo" src="assets/images/tardy-logo.jpg"></span>
+            </div>
+          </div>
+
+          <div class="row justify-content-center blankspace50">
+            <p></p>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

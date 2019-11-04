@@ -1,0 +1,99 @@
+<div class="meta-wrapper">
+  <div class="meta-content">
+    <div class="row">
+      <div class="col-sm-5 text-right">CPS ID</div>
+      <div class="col-sm-7">
+        <input type="text" disabled [value]="controlInformation.cps">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-5 text-right">Manufacturing Order</div>
+      <div class="col-sm-7">
+        <input type="text" disabled [value]="controlInformation.mo">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-5 text-right">Operation</div>
+      <div class="col-sm-7">
+        <input type="text" disabled [value]="controlInformation.ope">
+      </div>
+    </div>
+  </div>
+
+  <div class="meta-content">
+    <div class="row">
+      <div class="col-sm-5 text-right">Product Ref</div>
+      <div class="col-sm-7">
+        <input type="text" disabled [value]="controlInformation.product">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5 text-right">Customer</div>
+      <div class="col-sm-7">
+        <input type="text" disabled [value]="controlInformation.customer">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5 text-right">Quantity</div>
+      <div class="col-sm-7">
+        <input type="text" disabled [value]="controlInformation.quantity">
+      </div>
+    </div>
+  </div>
+
+  <div class="meta-content">
+    <div class="row">
+      <div class="col-sm-5 text-right">Control</div>
+      <div class="col-sm-7">
+        <input type="text" disabled [value]="controlInformation.control_type">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5 text-right">Defect rate</div>
+      <div class="col-sm-7">
+        <input type="text" disabled [value]="controlInformation.defect_rate">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5 text-right">Ressource Cost</div>
+      <div class="col-sm-7">
+        <input type="text" disabled [value]="controlInformation.ressource_cost + '€'">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5 text-right">Production rate</div>
+      <div class="col-sm-7">
+        <input type="text" disabled [value]="controlInformation.production_rate">
+      </div>
+    </div>
+  </div>
+
+  <div class="meta-content">
+    <div class="row">
+      <div class="col-sm-5 text-right">Product Cost</div>
+      <div class="col-sm-7">
+        <input type="text" disabled [value]="controlInformation.product_cost + '€'">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5 text-right">Total NC Cost</div>
+      <div class="col-sm-7">
+        <input type="text" disabled [value]="controlInformation.total_nc_cost">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5 text-right"> Total shutdown cost</div>
+      <div class="col-sm-7">
+        <input type="text" disabled [value]="controlInformation.total_shutdown_cost">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5 text-right"> Impact</div>
+      <div class="col-sm-7">
+        <input type="text" disabled [value]="controlInformation.impact">
+      </div>
+    </div>
+  </div>
+</div>
