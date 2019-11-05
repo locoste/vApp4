@@ -46,6 +46,9 @@
     "connect-busboy": "^0.0.2",
     "dotenv": "^8.1.0"
   },
+  "scripts": {
+    "start": "set PORT=8003 && node Server/server.js"
+  },
   "repository": {
     "type": "",
     "url": ""

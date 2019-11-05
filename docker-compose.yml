@@ -1,0 +1,33 @@
+version: '2'
+services:
+    vapp4Back:
+     image: vapp4back
+     container_name: vapp4back-container
+     hostname: vapp4back-host
+     build: 
+      context: .
+      dockerfile: Backend/Dockerfile
+     ports:
+      - "8002:8002"
+
+    vapp4Proxy:
+     image: vapp4proxy
+     container_name: vapp4proxy-container
+     hostname: vapp4proxy-host
+     build: 
+      context: .
+      dockerfile: vf-os-vapp-3.4-master/dev/Dockerfile
+     ports:
+      - "8002:8002"
+      - "8003:8003"
+      - "3000:3000"
+
+    vapp4Front:
+     depends_on:
+      - vapp4Proxy
+     build: 
+      context: .
+      dockerfile: vf-os-vapp-3.4-master/vapp4/Dockerfile
+     image: vapp4proxy
+     ports:
+      - "3000:3000"
