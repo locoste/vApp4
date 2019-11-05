@@ -343,7 +343,7 @@ export class ControllersService {
                 headers: headers,
                 observe: observe,
                 reportProgress: reportProgress,
-                responseType: 'text' 
+                responseType: 'json' 
             }
         );
     }

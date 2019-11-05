@@ -66,7 +66,7 @@ export class ControlViewComponent implements OnInit, OnDestroy {
                     this.controller.defect_rate = (((this.controller.defect_rate*this.cpsControlInformationArray.length-1)/100)+1)/this.cpsControlInformationArray.length*100;
                     this.controller.total_nc_cost = (this.controller.total_nc_cost+this.controller.product_cost);
                     this.controller.total_shutdown_cost = this.controller.total_shutdown_cost+this.controller.total_nc_cost;
-                    this.controller.impact = this.controller.action;
+                    this.controller.impact = this.controller.impact;
                     this.controller.production_rate=0;
                   }
                 });
