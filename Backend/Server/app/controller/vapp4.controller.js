@@ -1,4 +1,4 @@
-var dateFormat = require('dateFormat');
+var dateFormat = require('dateformat');
 
 const https = require('https');
 var http = require('http');
