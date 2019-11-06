@@ -5,7 +5,7 @@ ENV ASSET_NAME="vApp34Back"
 RUN mkdir -p /Server
 WORKDIR /Server
 
-COPY . .
+COPY /Backend .
 
 RUN ls -a
 
@@ -13,7 +13,7 @@ RUN npm install
 #RUN ls -a node_modules
 #RUN chmod +x entrypoint.sh
 
-EXPOSE 8002
+EXPOSE 8003
 
 LABEL vf-OS.author="lyon2"
 LABEL vf-OS.name="vApp34Back"

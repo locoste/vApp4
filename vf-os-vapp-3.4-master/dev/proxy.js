@@ -2,13 +2,16 @@ var http = require('http');
 
 const listenPort = 3000,
     //proxyHttpHost = 'vf-os2.univ-lyon2.fr',
-    proxyHttpHost = '159.84.143.247'
+    //proxyHttpHost = '159.84.143.247'
+    proxyHttpHost = 'vapp4back-host'
     proxyHttpPort = 8003,
     //proxySocketUrl = 'http://vf-os2.univ-lyon2.fr:8003/cps';
-    proxySocketUrl = 'http://159.84.143.247:8003/cps';
+    //proxySocketUrl = 'http://159.84.143.247:8003/cps';
+    proxySocketUrl = 'http://vapp4back-host:8003/cps';
 
 const additionalResponseHeaders = [
-    { name: 'access-control-allow-origin', value: 'http://localhost:4200' },
+    //{ name: 'access-control-allow-origin', value: 'http://localhost:4200' },
+    { name: 'access-control-allow-origin', value: '*' },
     { name: 'access-control-allow-credentials', value: 'true' }
 ]; 
 
@@ -51,6 +54,7 @@ const proxyServer = http.createServer(function(request, response) {
         proxy_request.write(chunk, 'binary');
     });
     request.addListener('end', function() {
+        console.log('end')
         proxy_request.end();
     });
 

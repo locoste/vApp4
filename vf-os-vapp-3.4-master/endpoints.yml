@@ -3,7 +3,7 @@ info:
   title: vf-OS vApp 3.4 Endpoints
   version: 1.0.0
 servers:
-  - url: http://159.84.143.247:8003
+  - url: http://localhost:8003
 paths:
   /login:
     post:

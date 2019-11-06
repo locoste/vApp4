@@ -5,7 +5,7 @@ ENV ASSET_NAME="vApp34"
 RUN mkdir -p /vapp4
 WORKDIR /vapp4
 
-COPY . .
+COPY /vf-os-vapp-3.4-master/vapp4 .
 
 RUN ls -a
 
@@ -13,7 +13,7 @@ RUN npm install
 #RUN ls -a node_modules
 #RUN chmod +x entrypoint.sh
 
-EXPOSE 3000
+EXPOSE 4200
 
 LABEL vf-OS.author="lyon2"
 LABEL vf-OS.name="vApp34"

@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
     vapp4Back:
      image: vapp4back
@@ -8,26 +8,46 @@ services:
       context: .
       dockerfile: Backend/Dockerfile
      ports:
-      - "8002:8002"
+      - "8003:8003"
+     networks:
+      testing_net:
+        ipv4_address: 172.28.1.1
 
     vapp4Proxy:
      image: vapp4proxy
+     depends_on:
+      - vapp4Back
      container_name: vapp4proxy-container
      hostname: vapp4proxy-host
      build: 
       context: .
       dockerfile: vf-os-vapp-3.4-master/dev/Dockerfile
      ports:
-      - "8002:8002"
-      - "8003:8003"
       - "3000:3000"
+     networks:
+      testing_net:
+        ipv4_address: 172.28.1.2
+     links:
+      - vapp4Back:vapp4back-container
 
     vapp4Front:
+     container_name: vapp4front-container
      depends_on:
       - vapp4Proxy
      build: 
       context: .
       dockerfile: vf-os-vapp-3.4-master/vapp4/Dockerfile
-     image: vapp4proxy
+     image: vapp4front
      ports:
-      - "3000:3000"
+      - "4200:4200"
+     networks:
+      testing_net:
+        ipv4_address: 172.28.1.3
+     links:
+      - vapp4Proxy:vapp4proxy-container
+networks:
+  testing_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
