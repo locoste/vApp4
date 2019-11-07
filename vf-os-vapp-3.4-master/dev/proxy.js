@@ -8,7 +8,7 @@ const listenPort = 3000,
     proxySocketUrl = 'http://159.84.143.247:8003/cps';
 
 const additionalResponseHeaders = [
-    { name: 'access-control-allow-origin', value: 'http://localhost:4200' },
+    { name: 'access-control-allow-origin', value: '*' },
     { name: 'access-control-allow-credentials', value: 'true' }
 ]; 
 

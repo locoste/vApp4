@@ -9,11 +9,13 @@ COPY . .
 
 RUN ls -a
 
+RUN npm update
 RUN npm install
 RUN ls -a node_modules
+
 #RUN chmod +x entrypoint.sh
 
-EXPOSE 3000
+EXPOSE 4200
 
 LABEL vf-OS.author="lyon2"
 LABEL vf-OS.name="vApp34"
