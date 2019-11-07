@@ -5,14 +5,12 @@ ENV ASSET_NAME="vApp34"
 RUN mkdir -p /vapp4
 WORKDIR /vapp4
 
-#COPY /vf-os-vapp-3.4-master/vapp4 .
-COPY . .
+COPY /vf-os-vapp-3.4-master/vapp4 .
+#COPY . .
 
 RUN ls -a
-RUN npm update
-RUN npm install
 
-RUN npm i -D webpack@4.41.2
+RUN npm install
 
 
 EXPOSE 4200
