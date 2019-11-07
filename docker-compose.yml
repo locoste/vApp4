@@ -8,26 +8,57 @@ services:
       context: .
       dockerfile: Backend/Dockerfile
      ports:
-      - "8002:8002"
+      - "8003:8003"
+     networks:
+      - front:
+        ipv4_address: 172.16.238.10
 
     vapp4Proxy:
      image: vapp4proxy
+     depends_on:
+      - vapp4Back
      container_name: vapp4proxy-container
      hostname: vapp4proxy-host
      build: 
       context: .
       dockerfile: vf-os-vapp-3.4-master/dev/Dockerfile
      ports:
-      - "8002:8002"
-      - "8003:8003"
       - "3000:3000"
+     networks:
+      - front:
+        ipv4_address: 172.16.238.10
+#       ipv6_address: "2001:3984:3989::10"
+#      - back
+     links:
+      - vapp4Back:vapp4back-container
 
     vapp4Front:
+     container_name: vapp4front-container
      depends_on:
       - vapp4Proxy
      build: 
       context: .
       dockerfile: vf-os-vapp-3.4-master/vapp4/Dockerfile
-     image: vapp4proxy
+     image: vapp4front
      ports:
-      - "3000:3000"
+      - "4200:4200"
+     networks:
+      - front:
+        ipv4_address: 172.16.238.10
+     links:
+      - vapp4Proxy:vapp4proxy-container
+networks:
+  front:
+    driver: bridge
+    driver_opts:
+      enable_ipv6: "true"
+      ipam:
+        driver: default
+        config:
+          - subnet: 172.16.238.0/24
+          gateway: 172.16.238.1
+          - subnet: "2001:3984:3989::/64"
+          gateway: "2001:3984:3989::1"
+  #- back:
+    # use a custom driver, with no options
+   # driver: custom-driver-1

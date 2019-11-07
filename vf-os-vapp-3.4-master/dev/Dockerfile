@@ -5,12 +5,12 @@ ENV ASSET_NAME="vApp34Proxy"
 RUN mkdir -p /vapp4proxy
 WORKDIR /vapp4proxy
 
-COPY . .
+COPY /vf-os-vapp-3.4-master/dev .
 
 RUN ls -a
 
 RUN npm install
-RUN ls -a node_modules
+#RUN ls -a node_modules
 #RUN chmod +x entrypoint.sh
 
 EXPOSE 3000

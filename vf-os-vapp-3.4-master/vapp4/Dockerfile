@@ -5,14 +5,18 @@ ENV ASSET_NAME="vApp34"
 RUN mkdir -p /vapp4
 WORKDIR /vapp4
 
-COPY . .
+COPY /vf-os-vapp-3.4-master/vapp4 .
 
 RUN ls -a
 
 RUN npm update
 RUN npm install
+<<<<<<< HEAD
 RUN ls -a node_modules
 
+=======
+#RUN ls -a node_modules
+>>>>>>> 296534d465f41c63fcda508234bd6fa8dd4d7585
 #RUN chmod +x entrypoint.sh
 
 EXPOSE 4200

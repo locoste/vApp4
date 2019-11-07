@@ -5,7 +5,7 @@ ENV ASSET_NAME="vApp34Back"
 RUN mkdir -p /Server
 WORKDIR /Server
 
-COPY . .
+COPY /Backend .
 
 RUN ls -a
 

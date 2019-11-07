@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:3000',
-  cpsSocketUrl: 'http://159.84.143.247:8003/cps'
+  //cpsSocketUrl: 'http://159.84.143.247:8003/cps'
+  cpsSocketUrl: 'http://localhost:8003/cps'
 };
 
 /*

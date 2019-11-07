@@ -28,7 +28,8 @@ import {Operation} from "../model/operation";
 @Injectable()
 export class ManufacturingOrdersService {
 
-    protected basePath = 'http://159.84.143.247:8003';
+    //protected basePath = 'http://159.84.143.247:8003';
+    protected basePath = 'http://localhost:8003';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 

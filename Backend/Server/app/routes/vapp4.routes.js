@@ -102,16 +102,16 @@ module.exports = function(app) {
     app.post('/setNewControlInformation', contSession.authrequired, controller.setNewControlInformation);
 
     // get CPS control information (TO BE CLARRIFED)
-    app.get('/getGlobalControlInformation/:mo'/*, contSession.authrequired*/, controller.getGlobalControlInformation);
+    app.get('/getGlobalControlInformation/:mo', contSession.authrequired, controller.getGlobalControlInformation);
 
     // get all quality control made by the CPS
     app.get('/getAllControl', contSession.authrequired, controller.getAllControl);
 
     // get the list of all operation for a Manufacturing Order
-    app.get('/getListOperation/:mo'/*, contSession.authrequired*/, controller.getListOperation);
+    app.get('/getListOperation/:mo', contSession.authrequired, controller.getListOperation);
 
     // start a CPS control on an operation of a Manufacturing Order
-    app.post('/startCPSControl/:control'/*, contSession.authrequired*/, controller.startCPSControl);
+    app.post('/startCPSControl/:control', contSession.authrequired, controller.startCPSControl);
 
     // stop CPS control
     app.post('/stopCPSControl/:control'/*, contSession.authrequired*/, controller.stopCPSControl);
@@ -123,8 +123,8 @@ module.exports = function(app) {
     app.post('/configureCylindre', contSession.authrequired, controller.configureCylindre);
 
     // get pdf adress 
-    app.get('/getFile/:document_name', controller.getFile);
+    app.get('/getFile/:document_name', contSession.authrequired, controller.getFile);
 
     // get the list of MO
-    app.get('/getListOfMO', controller.getListOfMO);
+    app.get('/getListOfMO', contSession.authrequired, controller.getListOfMO);
 }
